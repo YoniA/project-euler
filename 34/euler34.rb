@@ -10,21 +10,19 @@ def factorial(n)
 	(2..n).each do |d|
 		fact *= d
 	end
+	
 	fact
 end
 
-puts factorial(4)
 
-numbers.each do |a|
-	n = a.join("").to_i
-	sum = 0
-	a.each do |d|
-		sum += factorial(d)
-	end
+(10..1000000).each do |n|
+	
+	sum = n.digits.inject(0) {|acc, d| acc + factorial(d)}
 	if (sum == n)
 		perms << n	
+		puts n
 	end
 end
 
 
-p perms
+puts perms.sum
