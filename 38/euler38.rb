@@ -9,6 +9,8 @@ def has_unique_digits(n)
 	n.digits.uniq.size == n.digits.size
 end
 
+
+start = Time.now
 (1..10000).each do |n|
 	curr = n
 	(2..9).each do |i|
@@ -29,6 +31,8 @@ end
 end
 
 
-puts max
+runtime = Time.now - start
 
+puts max
+puts "Runtime: #{runtime} seconds" 
 
