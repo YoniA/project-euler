@@ -1,31 +1,20 @@
 
-start = Time.now
-sum = 0
 
-arr = []
-arr2 = []
-(1..100).each {|n| arr << 17*n}
-arr = arr.filter {|n| n.digits.uniq == n.digits}
-p arr
+pandigitals = %w[0 1 2 3 4 5 6 7 8 9].permutation.map(&:join)
 
-primes = [13, 11, 7, 5, 3, 2]
 
-(0..5).each do |k|
-	arr.each do |n|
-		(0...9).each do |i|
-			next if n.to_s.include?(i.to_s)
-			curr = (i.to_s + n.to_s[0..1]).to_i 
-			arr2 << (i.to_s + n.to_s) if curr % primes[k] == 0 
-		end
-	end
-	p primes[k], arr2
-	arr = arr2
-	arr2 = []
+candidates = []
+
+pandigitals.each do |n|
+	next unless n[7..9].to_i % 17 == 0 
+	next unless n[6..8].to_i % 13 == 0 
+	next unless n[5..7].to_i % 11 == 0 
+	next unless n[4..6].to_i % 7 == 0 
+	next unless n[3..5].to_i % 5 == 0 
+	next unless n[2..4].to_i % 3 == 0 
+	next unless n[1..3].to_i % 2 == 0 
+
+	candidates << n
 end
 
-runtime = Time.now - start
-
-puts arr
-puts arr.map {|n| n.to_i}.sum
-puts "Runtime: #{runtime}"
-
+puts candidates.inject(0) { |sum, n| sum + n.to_i }
