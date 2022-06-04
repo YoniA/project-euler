@@ -29,24 +29,24 @@ class Hand
 		results2 = [royal_flush(other.hand), straight_flush(other.hand), four_of_a_kind(other.hand), full_house(other.hand), \
 									 flush(other.hand), straight(other.hand), three_of_a_kind(other.hand), two_pairs(other.hand), one_pair(other.hand)]
 
-					rank1 = results1.find {|r| r!= false}
-					rank2 = results2.find {|r| r!= false}
-				
-					if (results1.index(rank1) == nil) && (results2.index(rank2) == nil)
-						return  RANKS.index(high_card(hand)) <=> RANKS.index(high_card(other.hand)) 
-					elsif results1.index(rank1) == results2.index(rank2)
-						if (RANKS.index(rank1) <=> RANKS.index(rank2)) != 0
-							return RANKS.index(rank1) <=> RANKS.index(rank2)
-						else
-							return RANKS.index(high_card(hand)) <=> RANKS.index(high_card(other.hand))
-						end 
-					elsif (results1.index(rank1) != nil) && (results2.index(rank2) == nil)
-						return 1
-					elsif (results2.index(rank2) != nil) && (results1.index(rank1) == nil)
-						return -1
-					else
-						return (results1.index(rank1) <=> results2.index(rank2)) * -1
-					end
+		rank1 = results1.find {|r| r!= false}
+		rank2 = results2.find {|r| r!= false}
+	
+		if (results1.index(rank1) == nil) && (results2.index(rank2) == nil)
+			return  RANKS.index(high_card(hand)) <=> RANKS.index(high_card(other.hand)) 
+		elsif results1.index(rank1) == results2.index(rank2)
+			if (RANKS.index(rank1) <=> RANKS.index(rank2)) != 0
+				return RANKS.index(rank1) <=> RANKS.index(rank2)
+			else
+				return RANKS.index(high_card(hand)) <=> RANKS.index(high_card(other.hand))
+			end 
+		elsif (results1.index(rank1) != nil) && (results2.index(rank2) == nil)
+			return 1
+		elsif (results2.index(rank2) != nil) && (results1.index(rank1) == nil)
+			return -1
+		else
+			return (results1.index(rank1) <=> results2.index(rank2)) * -1
+		end
 	end
 end
 

@@ -5,22 +5,22 @@ class PokerTest < Minitest::Test
 
 	def test_legal_hand
 		hand = %w{ 3D 4D 5D 6D 7D }
-		assert_equal true, Hand.legal_hand?(hand) == false ? false :true
+		assert_equal true, Hand.legal_hand?(hand) 
 
 		hand = %w{ 3D TS 5H QD 7D }
-		assert_equal true, Hand.legal_hand?(hand) == false ? false :true
+		assert_equal true, Hand.legal_hand?(hand) 
 
 		hand = %w{ 3D 4D 5D 6D 7D, 8F }
-		assert_equal false, Hand.legal_hand?(hand) == false ? false :true
+		assert_equal false, Hand.legal_hand?(hand) 
 
 		hand = %w{ 3D 4D 5D }
-		assert_equal false, Hand.legal_hand?(hand) == false ? false :true
+		assert_equal false, Hand.legal_hand?(hand) 
 
 		hand = %w{ 3D 3D 5D 6D 7D }
-		assert_equal false, Hand.legal_hand?(hand) == false ? false :true
+		assert_equal false, Hand.legal_hand?(hand) 
 
 		hand = %w{ 3d 4d 5d 6d 7d }
-		assert_equal false, Hand.legal_hand?(hand) == false ? false :true
+		assert_equal false, Hand.legal_hand?(hand) 
 	end
 
 
